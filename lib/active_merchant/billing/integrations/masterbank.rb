@@ -7,7 +7,10 @@ module ActiveMerchant #:nodoc:
         autoload :Notification, 'active_merchant/billing/integrations/masterbank/notification.rb'
        
         mattr_accessor :service_url
-        self.service_url = 'https://web3ds.masterbank.ru/cgi-bin/cgi_link'
+        self.service_url = 'https://pay.masterbank.ru/acquiring'
+        self.notification_confirmation_url = 'https://pay.masterbank.ru/acquiring/close'
+
+        mattr_accessor :secret_key
 
         def self.helper(order, account, options = {})
           Helper.new(order, account, options)
